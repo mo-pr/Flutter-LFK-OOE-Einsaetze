@@ -65,11 +65,12 @@ class Api {
           child: Row(
             children: [
               Container(
-                height: 13.h,
+                height: 15.h,
                 width: 8.w,
                 color: alarmColor,
               ),
               Container(
+                height: 15.h,
                 padding: EdgeInsets.all(5.w),
                 child: Text(
                   alarm['bezirk']['text'] +

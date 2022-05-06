@@ -2,7 +2,7 @@
     package="com.example.lfkooe_einsaetze_detailed">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="lfkooe_einsaetze_detailed"
+        android:label="Feuerwehreinsatzinfos OÖ"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
