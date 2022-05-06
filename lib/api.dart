@@ -8,6 +8,10 @@ import 'package:lfkooe_einsaetze_detailed/alarmdetail.dart';
 import 'package:sizer/sizer.dart';
 
 class Api {
+  BuildContext context;
+
+  Api(this.context);
+
   static const String currentURL =
       "https://cf-intranet.ooelfv.at/webext2/rss/json_laufend.txt";
   static const String dailyURL =
@@ -15,16 +19,16 @@ class Api {
   static const String twoDayURL =
       "https://cf-intranet.ooelfv.at/webext2/rss/json_2tage.txt";
 
-  static Future<String> _getDataFromAPI() async {
+  Future<String> _getDataFromAPI() async {
     String body = "";
-    http.Response response = await http.get(Uri.parse(twoDayURL));
+    http.Response response = await http.get(Uri.parse(currentURL));
     if (response.statusCode == 200) {
       body = response.body.toString();
     }
     return body;
   }
 
-  static Future<List<GestureDetector>> getWidgetFromAlarm() async {
+  Future<List<GestureDetector>> getWidgetFromAlarm() async {
     String data = "";
     List<String> alarmStrings = <String>[];
     List<GestureDetector> alarmContainers = <GestureDetector>[];
@@ -51,7 +55,11 @@ class Api {
       }
       alarmContainers.add(GestureDetector(
         onTap: () => {
-          AlarmDetail(jsonEncode(alarm)),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => AlarmDetail(jsonEncode(alarm))),
+          )
         },
         child: Card(
           child: Row(
