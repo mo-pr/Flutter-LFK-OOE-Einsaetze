@@ -74,7 +74,7 @@ class Api {
                 padding: EdgeInsets.all(5.w),
                 child: Text(
                   alarm['bezirk']['text'] +
-                      " " +
+                      "\n" +
                       alarm['adresse']['emun'] +
                       "\n" +
                       alarm['einsatzsubtyp']['text'] +

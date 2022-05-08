@@ -29,9 +29,7 @@ class _AlarmDetailState extends State<AlarmDetail> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () => {
-            Navigator.pop(context)
-          },
+          onPressed: () => {Navigator.pop(context)},
         ),
         title: const Text(
           "Feuerwehreinsatzinfos OÖ",
@@ -83,16 +81,29 @@ class _AlarmDetailState extends State<AlarmDetail> {
                     child: Padding(
                       padding: EdgeInsets.all(15),
                       child: Text(
-                        "Einsatz: " +
-                            alarm['num1'] +
-                            "\nEinsatzart: " +
-                            alarm['einsatzsubtyp']['text'] +
-                            "\nBezirk: " +
-                            alarm['bezirk']['text'] +
-                            "\nDauer: " +
-                            alarm['startzeit'] +
-                            "\nAlarmstufe: " +
-                            alarm['alarmstufe'].toString(),
+                        alarm['adresse']['ecompl'] != null
+                            ? "Einsatz: " +
+                                alarm['num1'] +
+                                "\nEinsatzart: " +
+                                alarm['einsatzsubtyp']['text'] +
+                                "\nBezirk: " +
+                                alarm['bezirk']['text'] +
+                                "\nDauer: " +
+                                alarm['startzeit'] +
+                                "\nAlarmstufe: " +
+                                alarm['alarmstufe'].toString() +
+                                "\n\nZusatz: " +
+                                alarm['adresse']['ecompl']
+                            : "Einsatz: " +
+                                alarm['num1'] +
+                                "\nEinsatzart: " +
+                                alarm['einsatzsubtyp']['text'] +
+                                "\nBezirk: " +
+                                alarm['bezirk']['text'] +
+                                "\nDauer: " +
+                                alarm['startzeit'] +
+                                "\nAlarmstufe: " +
+                                alarm['alarmstufe'].toString(),
                       ),
                     ),
                   ),
